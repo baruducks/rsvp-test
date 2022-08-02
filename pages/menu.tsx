@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { Grid, Container, FormControl, Button, Card, CardContent, Typography } from "@mui/material";
+import { Grid, Container, FormControl, Button, Card, CardContent, Typography, ButtonBase } from "@mui/material";
 import DatePicker from "react-date-picker/dist/entry.nostyle";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -66,53 +66,58 @@ const Table: NextPage = () => {
 									</CardContent>
 								</Card>
 								<Grid xs={6}>
-									<Typography
-										onClick={() => {
-											if (item.id == 1) {
-												setPkg1(pkg1 + 1);
-												dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
-											}
-											if (item.id == 2) {
-												setPkg2(pkg2 + 1);
-												dispatch(
-													beveragesSelection({
-														pkg1,
-														pkg2,
-														pkg3,
-													})
-												);
-											}
-											if (item.id == 3) {
-												setPkg3(pkg3 + 1);
-												dispatch(
-													beveragesSelection({
-														pkg1,
-														pkg2,
-														pkg3,
-													})
-												);
-											}
-										}}
-									>
-										+
+									<Typography>
+										<ButtonBase
+											disableRipple
+											onClick={() => {
+												if (item.id == 1) {
+													setPkg1(pkg1 + 1);
+													dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
+												}
+												if (item.id == 2) {
+													setPkg2(pkg2 + 1);
+													dispatch(
+														beveragesSelection({
+															pkg1,
+															pkg2,
+															pkg3,
+														})
+													);
+												}
+												if (item.id == 3) {
+													setPkg3(pkg3 + 1);
+													dispatch(
+														beveragesSelection({
+															pkg1,
+															pkg2,
+															pkg3,
+														})
+													);
+												}
+											}}
+										>
+											+
+										</ButtonBase>
 									</Typography>
-									<Typography
-										onClick={() => {
-											if (item.id == 1) {
-												setPkg1(pkg1 - 1);
-												dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
-											}
-											if (item.id == 2) {
-												setPkg2(pkg2 - 1);
-												dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
-											}
-											if (item.id == 3) {
-												setPkg3(pkg3 - 1);
-												dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
-											}
-										}}
-									>
-										-
+									<Typography>
+										<ButtonBase
+											onClick={() => {
+												if (item.id == 1) {
+													setPkg1(pkg1 - 1);
+													dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
+												}
+												if (item.id == 2) {
+													setPkg2(pkg2 - 1);
+													dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
+												}
+												if (item.id == 3) {
+													setPkg3(pkg3 - 1);
+													dispatch(beveragesSelection({ pkg1, pkg2, pkg3 }));
+												}
+											}}
+										>
+											-
+										</ButtonBase>
 									</Typography>
 								</Grid>
 							</Grid>

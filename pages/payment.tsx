@@ -45,11 +45,27 @@ const Payment: NextPage = () => {
 						<br />
 						Date: {`${data.date.getDate()}/${data.date.getMonth() + 1}/${data.date.getFullYear()} ${data.hour} PM`}{" "}
 						<br />
-						{data.beverages.pkg1 != 0 && <>Package 1: {data.beverages.pkg1}</>}
-						{data.beverages.pkg2 != 0 && <>Package 1: {data.beverages.pkg2}</>}
-						{data.beverages.pkg3 != 0 && <>Package 1: {data.beverages.pkg3}</>}
-						<br />
+						{data.beverages.pkg1 != 0 && (
+							<>
+								Package 1: {data.beverages.pkg1}
+								<br />
+							</>
+						)}
+						{data.beverages.pkg2 != 0 && (
+							<>
+								Package 2: {data.beverages.pkg2}
+								<br />
+							</>
+						)}
+						{data.beverages.pkg3 != 0 && (
+							<>
+								Package 3: {data.beverages.pkg3}
+								<br />
+							</>
+						)}
 						Total: Rp{data.limit + data.price}
+						<br />
+						Deposit: Rp1000000
 					</Grid>
 					{cardContent.map((item): any => {
 						return (
