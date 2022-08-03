@@ -15,10 +15,12 @@ import {
 	selectType,
 	tableSelection,
 	typeSelection,
+	resetEvent,
 } from "../features/bill/billSlice";
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Layout from "../components/template/layout/layout";
 
 interface Table {
 	id: number;
@@ -28,8 +30,8 @@ interface Table {
 	maxPerson: number;
 }
 
-const Preorder: NextPage = () => {
-	const route = useRouter();
+const Preorder = () => {
+	const router = useRouter();
 	var date = useSelector(selectDate);
 	var table = useSelector(selectTable);
 	var price = useSelector(selectPrice);
@@ -45,12 +47,15 @@ const Preorder: NextPage = () => {
 		{ id: 8, label: "A8", price: 5000000, limit: 1000000, maxPerson: 8 },
 		{ id: 9, label: "A9", price: 4000000, limit: 2000000, maxPerson: 7 },
 	];
+
 	useEffect(() => {
-		if (!date) {
-			route.push("/");
+		if (date == "") {
+			router.push("/");
+			dispatch(resetEvent);
 		}
 		dispatch(typeSelection("preorder"));
-	});
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -58,31 +63,59 @@ const Preorder: NextPage = () => {
 				<meta name="description" content="Ticket Only" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Grid container maxWidth="lg" spacing={1}>
-				{tables.map((item: Table) => {
-					return (
-						<Grid item xs={4} key={item.id} sx={{ textAlign: "center" }}>
-							<Card
-								sx={{ height: "100%", backgroundColor: table === item.label ? "red" : "white" }}
-								onClick={() => {
-									dispatch(tableSelection(item.label));
-									dispatch(priceSelection(item.price));
-									dispatch(limitSelection(item.limit));
-								}}
-							>
-								<CardContent>
-									<p>{item.label}</p>
-									<p>capacity: {item.maxPerson} people</p>
-									<p>minimum order: Rp{item.limit}</p>
-								</CardContent>
-							</Card>
-						</Grid>
-					);
-				})}
-				<Link href="/menu">
-					<Button>Proceed</Button>
-				</Link>
+			<Grid container maxWidth="xl">
+				<Grid item container spacing={1}>
+					{tables.map((item: Table, index: Number) => {
+						return (
+							<Grid item xs={4} key={item.id} sx={{ textAlign: "center" }}>
+								<Card
+									sx={{
+										height: "100%",
+										border: table === item.label ? "1px solid red" : "",
+									}}
+									onClick={() => {
+										dispatch(tableSelection(item.label));
+										dispatch(priceSelection(item.price));
+										dispatch(limitSelection(item.limit));
+									}}
+								>
+									<CardContent>
+										<p>{item.label}</p>
+										<p>capacity: {item.maxPerson} people</p>
+										<p>minimum order: Rp{item.limit}</p>
+									</CardContent>
+								</Card>
+							</Grid>
+						);
+					})}
+				</Grid>
+				<Grid item container alignItems="center" justifyContent="center">
+					<Link href="/menu">
+						<Button
+							sx={{
+								mt: 1,
+								height: "100%",
+								color: "white",
+								backgroundColor: "rgba(104, 105, 97, 1)",
+								"&:hover": {
+									backgroundColor: "rgba(104,105,97,.5)",
+								},
+								width: "200px",
+							}}
+						>
+							Proceed
+						</Button>
+					</Link>
+				</Grid>
 			</Grid>
+		</>
+	);
+};
+
+Preorder.getLayout = function getLayout(page: any) {
+	return (
+		<>
+			<Layout>{page}</Layout>
 		</>
 	);
 };

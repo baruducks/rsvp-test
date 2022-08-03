@@ -2,8 +2,9 @@ html,
 body {
 	padding: 0;
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,
-		Helvetica Neue, sans-serif;
+	font-family: Inter !important;
+	scroll-behavior: smooth;
+	box-sizing: border-box;
 }
 
 a {
@@ -13,16 +14,7 @@ a {
 
 * {
 	box-sizing: border-box;
-}
-
-@media (prefers-color-scheme: dark) {
-	html {
-		color-scheme: dark;
-	}
-	body {
-		color: white;
-		background: #161616;
-	}
+	font-family: Inter !important;
 }
 
 .react-date-picker {
@@ -50,7 +42,8 @@ a {
 	display: flex;
 	flex-grow: 1;
 	flex-shrink: 0;
-	border: thin solid gray;
+	border: thin solid white;
+	border-radius: 4px;
 }
 
 .react-date-picker__inputGroup {
@@ -58,11 +51,13 @@ a {
 	flex-grow: 1;
 	padding: 0 16px;
 	box-sizing: content-box;
+	color: white;
 }
 
 .react-date-picker__inputGroup__divider {
 	padding: 1px 0;
 	white-space: pre;
+	color: white;
 }
 
 .react-date-picker__inputGroup__input {
@@ -75,12 +70,14 @@ a {
 	font: inherit;
 	box-sizing: content-box;
 	-moz-appearance: textfield;
+	color: white;
 }
 
 .react-date-picker__inputGroup__input::-webkit-outer-spin-button,
 .react-date-picker__inputGroup__input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+	color: white;
 }
 
 /* .react-date-picker__inputGroup__input:invalid {
@@ -90,6 +87,7 @@ a {
 .react-date-picker__inputGroup__input--hasLeadingZero {
 	margin-left: -0.54em;
 	padding-left: calc(1px + 0.54em);
+	color: white;
 }
 
 .react-date-picker__button {
@@ -190,6 +188,11 @@ a {
 	background-color: #f0f0f0;
 }
 
+.react-date-picker__clear-button__icon,
+.react-date-picker__button__icon {
+	stroke: white;
+}
+
 .react-calendar__navigation button:enabled:hover,
 .react-calendar__navigation button:enabled:focus {
 	background-color: #e6e6e6;
@@ -275,4 +278,66 @@ a {
 
 .react-calendar--selectRange .react-calendar__tile--hover {
 	background-color: #e6e6e6;
+}
+
+.MuiCard-root {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-grow: 1;
+	flex-basis: 0;
+}
+
+.MuiCardActions-root {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+/* ::-webkit-scrollbar {
+	width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #6e6c6c;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #6e6c6c;
+	border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #6e6c6c;
+}
+img {
+	-ms-transform: translateZ(0); /* IE 9 */
+	-webkit-transform: translateZ(0); /* Chrome, Safari, Opera */
+	transform: translateZ(0);
+}
+
+.toastBody {
+	font-size: 14px !important;
+}
+
+:root {
+	--toastify-z-index: 99999 !important;
+}
+
+.swal2-popup button {
+	font-family: "Urbanist";
+}
+
+.swal2-popup h2 {
+	font-family: "Urbanist";
+}
+
+.swal-custom {
+	z-index: 99997 !important;
+}
+
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+	background: transparent !important;
 }

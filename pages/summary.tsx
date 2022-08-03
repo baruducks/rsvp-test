@@ -11,22 +11,27 @@ import {
 	selectPrice,
 	selectType,
 	typeSelection,
+	resetEvent,
 } from "../features/bill/billSlice";
 import { useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Layout from "../components/template/layout/layout";
 
-const Summary: NextPage = () => {
-	const route = useRouter();
+const Summary = () => {
+	const router = useRouter();
 	var date = useSelector(selectDate);
 	var type = useSelector(selectType);
 	var price = useSelector(selectPrice);
 	const dispatch = useDispatch();
+
 	useEffect(() => {
-		if (!date) {
-			route.push("/");
+		if (date == "") {
+			router.push("/");
+			dispatch(resetEvent);
 		}
-	});
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -55,6 +60,14 @@ const Summary: NextPage = () => {
 			) : (
 				""
 			)}
+		</>
+	);
+};
+
+Summary.getLayout = function getLayout(page: any) {
+	return (
+		<>
+			<Layout>{page}</Layout>
 		</>
 	);
 };
