@@ -239,7 +239,7 @@ const Home = () => {
 			</Grid>
 			{data.hour != "" && data.date != "" && data.name != "" && validatePhone(data.phone) && (
 				<Grid item xs={12} container alignItems="center" justifyContent="center" sx={{ mt: 3 }}>
-					<Link href="/type">
+					<Link href="/table">
 						<Button
 							sx={{
 								color: "white",

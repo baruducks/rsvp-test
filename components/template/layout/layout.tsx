@@ -21,11 +21,11 @@ const Layout = ({ children }: any) => {
 					<div>
 						<Grid item container sx={{ px: 4, pb: 2 }}>
 							<Container maxWidth="xl">
-								<Grid item container alignItems="center" justifyContent="center" sx={{ my: 4 }}>
-									<img
+								<Grid item container alignItems="center" justifyContent="center" sx={{ my: 8 }}>
+									{/* <img
 										src="/logo/southbank.png"
 										style={{ width: "100%", maxWidth: "100px", height: "auto" }}
-									/>
+									/> */}
 								</Grid>
 								<Grid item>
 									<main>{children}</main>

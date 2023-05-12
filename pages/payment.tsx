@@ -68,7 +68,7 @@ const Payment = () => {
 								spacing={2}
 							>
 								<Grid item>
-									<Typography sx={{ color: "white" }}>Amount of People: {data.amount}</Typography>
+									<Typography sx={{ color: "white" }}>Maximum People: {data.amount} pax</Typography>
 								</Grid>
 								<Grid item>
 									<Typography sx={{ color: "white" }}>

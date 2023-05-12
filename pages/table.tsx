@@ -36,15 +36,15 @@ const Table = () => {
 	var price = useSelector(selectPrice);
 	const dispatch = useDispatch();
 	const tables: Table[] = [
-		{ id: 1, label: "A1", price: 2000000, maxPerson: 5 },
-		{ id: 2, label: "A2", price: 3000000, maxPerson: 6 },
-		{ id: 3, label: "A3", price: 4000000, maxPerson: 7 },
-		{ id: 4, label: "A4", price: 5000000, maxPerson: 8 },
-		{ id: 5, label: "A5", price: 4000000, maxPerson: 7 },
-		{ id: 6, label: "A6", price: 3000000, maxPerson: 6 },
-		{ id: 7, label: "A7", price: 4000000, maxPerson: 7 },
-		{ id: 8, label: "A8", price: 5000000, maxPerson: 8 },
-		{ id: 9, label: "A9", price: 4000000, maxPerson: 7 },
+		{ id: 1, label: "Table 1", price: 2000000, maxPerson: 5 },
+		{ id: 2, label: "Table 2", price: 3000000, maxPerson: 6 },
+		{ id: 3, label: "Table 3", price: 4000000, maxPerson: 7 },
+		{ id: 4, label: "Table 4", price: 5000000, maxPerson: 8 },
+		{ id: 5, label: "Table 5", price: 4000000, maxPerson: 7 },
+		{ id: 6, label: "Table 6", price: 3000000, maxPerson: 6 },
+		{ id: 7, label: "Table 7", price: 4000000, maxPerson: 7 },
+		{ id: 8, label: "Table 8", price: 5000000, maxPerson: 8 },
+		{ id: 9, label: "Table 9", price: 4000000, maxPerson: 7 },
 	];
 
 	useEffect(() => {
@@ -83,6 +83,7 @@ const Table = () => {
 									onClick={() => {
 										dispatch(tableSelection(item.label));
 										dispatch(priceSelection(item.price));
+                                        dispatch(amountSelection(item.maxPerson));
 									}}
 								>
 									<CardContent>
